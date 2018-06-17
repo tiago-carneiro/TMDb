@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TMDb.Core"
+             x:Class="TMDb.Core.MovieListPage"
+             BackgroundColor="{StaticResource AppBackgroundColor}"
+             Title="{Binding Title}">
+    <StackLayout>
+        <ListView VerticalOptions="FillAndExpand" 
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"   
+                ItemsSource="{Binding Items}"
+                SeparatorColor="{StaticResource ListSeparatorColor}"
+                CachingStrategy="RecycleElement"
+                local:AttachedItemTappedBehavior.Command="{Binding ItemClickCommand}"
+                IsVisible="{Binding DataLoaded}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand" 
+                                 HorizontalOptions="FillAndExpand" Spacing="8">
+
+                            <Image VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="125">
+                                <Image.Source>
+                                    <UriImageSource Uri="{Binding PosterPath}" CachingEnabled="true"/>
+                                </Image.Source>
+                            </Image>
+
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Spacing="8" Margin="8">
+                                <Label Text="{Binding Name}" Style="{StaticResource lblTitle}"/>
+                                <Label Text="{Binding ReleaseDate, StringFormat='{0:d}'}" Style="{StaticResource lblDefault}"/>
+                                <Label Text="{Binding Genres}" Style="{StaticResource lblDefault}"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.Footer>
+                <ActivityIndicator IsVisible="{Binding IsBusy}"
+                                       IsRunning="{Binding IsBusy}"
+                                       Margin="16"/>
+            </ListView.Footer>
+            <ListView.Behaviors>
+                <local:InfiniteScrollBehavior LoadMoreCommand="{Binding LoadMoreCommand}" />
+            </ListView.Behaviors>
+        </ListView>
+
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ActivityIndicator HorizontalOptions="Center" 
+                               VerticalOptions="Center"
+                               IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"/>
+
+            <Grid.Triggers>
+                <DataTrigger TargetType="Grid"
+                             Binding="{Binding DataLoaded}"
+                             Value="True">
+                    <Setter Property="IsVisible" Value="False"/>
+                </DataTrigger>
+            </Grid.Triggers>
+        </Grid>
+    </StackLayout>
+</ContentPage>
