@@ -12,7 +12,7 @@ An app using the The Movie Db api to show a list and detail of upcoming movies.
 
 ## Screenshots
 
-| Galaxy S8 - API26 - 8.0.0 - 1440x2960 - pt-br | Nexus 5X - API23 - 6.0.0 - 1080x1920 - en-us | 
+| Galaxy S8 - API26 - 8.0.0 - 1440x2960 - en-us | Nexus 5X - API23 - 6.0.0 - 1080x1920 - pt-br | 
 | --- | --- |
 |![en-us-list](https://github.com/tiago-carneiro/TMDb/blob/development/screenshots/list-en-us.png)|![en-us-list](https://github.com/tiago-carneiro/TMDb/blob/development/screenshots/list-pt-br.png)|
 |![en-us-detail](https://github.com/tiago-carneiro/TMDb/blob/development/screenshots/detail-en-us.png)|![en-us-detail](https://github.com/tiago-carneiro/TMDb/blob/development/screenshots/detail-pt-br.png)|
