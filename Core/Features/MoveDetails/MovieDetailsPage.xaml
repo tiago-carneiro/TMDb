@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMDb.Core.MovieDetailsPage"
+             xmlns:local="clr-namespace:TMDb.Core"
+             BackgroundColor="{StaticResource AppBackgroundColor}"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand">
+            <Grid>
+                <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" Spacing="8" Margin="0, 0, 0, 8">
+                    <Image Margin="0"
+                   HorizontalOptions="FillAndExpand"
+                   HeightRequest="235"
+                   VerticalOptions="Start"     
+                   Aspect="AspectFill">
+                        <Image.Source>
+                            <UriImageSource Uri="{Binding Item.BackdropPath}" CachingEnabled="true"/>
+                        </Image.Source>
+                    </Image>
+
+                    <Label Margin="16, 0" Text="{Binding Item.Name}" Style="{StaticResource lblTitle}" />
+
+                    <local:Label2 Margin="16, 0" BindingContext="{Binding Item}" Type="date"/>
+
+                    <local:Label2 Margin="16, 0" BindingContext="{Binding Item}" Type="genre"/>
+
+                    <Label Margin="16, 0" Text="{Binding Item.Overview}" TextColor="{StaticResource PrimaryTextColor}"/>
+
+                </StackLayout>
+
+                <ActivityIndicator HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   IsVisible="{Binding IsBusy}"
+                                   IsRunning="{Binding IsBusy}"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

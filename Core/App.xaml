@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TMDb.Core.App">
+	<Application.Resources>
+        <ResourceDictionary>
+            
+            <!--#region Colors-->
+            <Color x:Key="AppBackgroundColor">#1D1D1D</Color>
+            <Color x:Key="ListSeparatorColor">#6D6D6D</Color>
+            
+            <Color x:Key="PrimaryTextColor">#C8C8C8</Color>
+            <Color x:Key="SecundaryTextColor">#919191</Color>
+            <!--#endregion-->
+
+            <Style x:Key="lblDefault" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SecundaryTextColor}"/>
+            </Style>
+
+            <Style x:Key="lblTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+            </Style>
+            
+        </ResourceDictionary>
+	</Application.Resources>
+</Application>
